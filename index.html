@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User List</title>
+</head>
+<body>
+    <h1>Users</h1>
+    <div id="user-list"></div>
+    <script>
+        fetch('http://127.0.0.1:5000/users')
+            .then(response => response.json())
+            .then(data => {
+                const userList = document.getElementById('user-list');
+                data.forEach(user => {
+                    const userItem = document.createElement('div');
+                    userItem.textContent = `Name: ${user.name}, Email: ${user.email}`;
+                    userList.appendChild(userItem);
+                });
+            });
+    </script>
+</body>
+</html>
